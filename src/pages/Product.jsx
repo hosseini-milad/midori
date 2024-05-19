@@ -60,7 +60,7 @@ const Product = () => {
             <div className="card-wrapper" key={product.id}>
               <div className="card">
                 <img src={baseUrl+product.image} alt={product.title}/>
-                
+                <div className="title">{product.title}</div>
               </div>
             </div>))}
             </div>
