@@ -3,9 +3,10 @@ import logo from "../assets/img/midori-logo.svg"
 import { useState } from 'react'
 import Submenu from './Submenu'
 
-const NavbarP = () => {
+const NavbarP = (props) => {
   const [Open , setOpen] = useState(false);
   const [OpenSub , setOpenSub] = useState(false);
+  const data = props.data
   //console.log(Open)
   const openMenu=(e)=>{
     setOpen(e)
@@ -13,8 +14,8 @@ const NavbarP = () => {
   }
   return (
     <div className="midori-header">
-      <img className="img-web" src="/public/banners/Product-Steering-Parts.webp" alt=""/>
-      <img className="img-mobile" src="/public/banners/mobile/Product-Steering-Parts.webp" alt=""/>
+      <img className="img-web" src={props.baseUrl+data.imageUrl} alt={data.title}/>
+      <img className="img-mobile" src={props.baseUrl+data.imageUrl} alt={data.title}/>
 
       <label className="hamburger-menu">
         <input id="hamburger-btn" type="checkbox" onChange={(e)=>openMenu(e.target.checked)}/>
@@ -33,8 +34,7 @@ const NavbarP = () => {
         </ul>
         {OpenSub?<Submenu/>:<></>}
       </div>
-
-
+      <img src="/public/cover.png" className='imageCover'/>
   </div>
 
   )

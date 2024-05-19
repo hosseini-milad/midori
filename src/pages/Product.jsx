@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import NavbarP from "../components/NavbarP.jsx"
 import productcards from "../productcards.json"
-import list from "../list.json"
+const baseUrl="https://midoriadmin.dkmehr.com"
 const data = [
       {"id":"1","title":"Control Arms","url":"controlArm","imageUrl":"/public/product/1.webp"},
       {"id":"2","title":"Stabilizers","imageUrl":"public\\product\\2.webp"},
@@ -13,46 +13,54 @@ const data = [
 const Product = () => {
   const url = window.location.pathname.split('/')
   const productId = url?url[2]:''
-  console.log(productId)
-  "midori | contorl Arm"
-
-  const [boardArray,setBoardArray] = useState()
-    useEffect(()=>{
-        const body={
-          productId:productId
-        }
-        const postOptions={
-            method:'post',
-            headers: {'Content-Type': 'application/json'},
-            body:JSON.stringify(body)
-          }
-      fetch("https://panel.mehrgaz.com/api" + "/panel/product/list-product",postOptions)
-      .then(res => res.json())
-      .then(
+  const [productData,setProductData] = useState()
+  const [footerText,setFooterText] = useState(["",""])
+  console.log(productData)
+  
+  useEffect(() => {
+    const postOptions={
+        method:'post',
+        headers: {
+            "content-type": "application/json"
+        },
+        body:JSON.stringify({productId:productId})
+    }
+    fetch(baseUrl+
+    "/api/panel/product/fetch-product",postOptions)
+        .then(res => res.json())
+        .then(
         (result) => {
-            if(result.error){
-              
-            }
-            setBoardArray(result)
+          setProductData(result.filter)
+          setFooterText(result.filter&&result.filter.footer
+            &&result.filter.footer.split('|'))
         },
         (error) => {
-          console.log(error);
+            console.log(error);
         }
-      )
-    },[])
+        )
+        .catch((error)=>{
+        console.log(error)
+        })
 
+    },[])
+    if(!productData)
+      return(
+        <div className="midori-product-steering">
+          waiting...
+        </div>
+      )
   return (
     <div className="midori-product-steering">
-      <NavbarP/>
+      <NavbarP data={productData} baseUrl={baseUrl}/>
       <main className="midori-main">
         <section className="product-sec">
           <p className="section-title">Product Range</p>
           <div className="container">
-            {data&&data.map((product)=>(
+            {productData.range&&productData.range.map((product)=>(
             <div className="card-wrapper" key={product.id}>
               <div className="card">
-                <img src={product.imageUrl} alt={product.title}/>
-                <div className="title">{product.title}</div>
+                <img src={baseUrl+product.image} alt={product.title}/>
+                
               </div>
             </div>))}
             </div>
@@ -60,21 +68,19 @@ const Product = () => {
         <section className="adv-list">
           <p className="section-title">Midori Advantages at a Glance
           </p>
-          <ul>
-            {list&&list.map((listitem)=>(
-              <li key={listitem.id}>
-              <div className="circle"></div>{listitem.text}
-            </li>
-            ))}
-          </ul>
+          <p className='advantageUL' 
+            dangerouslySetInnerHTML={{__html:productData.advantages}}>
+            
+          </p>
         </section>
       </main>
       <footer className="midori-footer">
         <div className="white"></div>
-        <img src="/public\banners\Product-Steering-Parts-footer.webp" alt="steering wheel"/>
+        <img src={baseUrl+productData.footerUrl} className='footerImage'
+          alt={productData.title}/>
         <div className="p-wrapper">
-          <p>Guarantee Policy</p>
-          <p>2 years or 75,000 km</p>
+          <p>{footerText[0]}</p>
+          <p>{footerText[1]}</p>
         </div>
       </footer>
 

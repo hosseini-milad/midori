@@ -546,7 +546,6 @@ body {
 .midori-product-steering .midori-main .adv-list ul {
   list-style: none;
   width: 60%;
-  margin-inline: auto;
 }
 .midori-product-steering .midori-main .adv-list li {
   width: 100%;
@@ -927,4 +926,49 @@ body {
 }
 .midori-home {
   background-color: #333;
+}
+
+
+.advantageUL{
+  width: 100%;
+}
+.advantageUL ul{
+  width: 85%;
+}
+.advantageUL li{
+  display: list-item !important;
+  list-style: disc;
+}
+.advantageUL li::marker{
+  background-color: var(--font-color-600);
+    min-width: 20px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+  
+}
+.mainTitle{
+  position: absolute;
+  bottom: 140px;
+  font-size: 50px;
+  color: #eee;
+  opacity: 0.7;
+  font-family: sans-serif;
+}
+.img-web{
+  max-height: 120vh;
+  object-fit: cover;
+  /*filter: sepia(100%) hue-rotate(150deg) saturate(300%) brightness(.7);*/
+}
+.footerImage{
+  /*filter: sepia(100%) hue-rotate(10deg) saturate(300%) brightness(.7);*/
+}
+.imageCover{
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+}
+
+.midori-main{
+  width: 70%;
+  margin: auto;
 }
