@@ -20,9 +20,6 @@ const userSchema = new mongoose.Schema({
   profile:{ type: String },
   address:{ type: String },
   meli:{ type: String },
-
-  StockId:{type:String},
-  CustomerID:{type:String},
   date:{type:Date}
 });
 

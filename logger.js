@@ -20,8 +20,11 @@ router.use(bodyParser.urlencoded({
 router.use(bodyParser.json())
 
 
-const fetchApi = require('./router/fetchApi')
-router.use('/api/fetch', fetchApi)
+const productApi = require('./router/productApi')
+const authApi = require('./router/authApi')
+router.use('/api/auth', authApi)
+
+router.use('/api/panel/product', productApi)
 
 // express-winston logger makes sense BEFORE the router
 
