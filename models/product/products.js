@@ -9,6 +9,8 @@ const ProductSchema = new Schema({
     description:String,
     active:Boolean,
     range:Array,
+    rangeText:String,
+    advantageText:String,
     advantages:String,
     imageUrl: {type:String},
     footerUrl: {type:String},
