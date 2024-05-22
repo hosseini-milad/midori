@@ -295,6 +295,9 @@ body {
   position: absolute;
   left: 20px;
   top: 12px;
+  font-size: 1rem;
+  margin-top: 2px;
+  font-weight: 400;
 }
 /* Main Content */
 .midori-home .midori-main {

@@ -27,7 +27,7 @@ const NavbarP = (props) => {
         <ul className="menu-list">
           <li className="menu-item"><a href="/">Home</a></li>
           <li className="menu-item"><a href="/about">About Us</a></li>
-          <li className="menu-item"><a className="sub-btn" href="#" onClick={()=>setOpenSub(1)}>Products</a></li>
+          <li className="menu-item"><a className="sub-btn" href="#" onClick={()=>setOpenSub(1)}>Products<i className="fa-solid fa-chevron-left"></i></a></li>
           <li className="menu-item"><a href="/support">Support</a></li>
           <li className="menu-item"><a href="/contact">Contact us</a></li>
         </ul>
