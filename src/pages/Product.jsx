@@ -2,19 +2,12 @@ import React, { useEffect, useState } from 'react'
 import NavbarP from "../components/NavbarP.jsx"
 import productcards from "../productcards.json"
 const baseUrl="https://midoriadmin.dkmehr.com"
-const data = [
-      {"id":"1","title":"Control Arms","url":"controlArm","imageUrl":"/public/product/1.webp"},
-      {"id":"2","title":"Stabilizers","imageUrl":"public\\product\\2.webp"},
-      {"id":"3","title":"Tie Rod Ends","imageUrl":"public\\product\\3.webp"},
-      {"id":"4","title":"Bushings","imageUrl":"public\\product\\4.webp"},
-      {"id":"5","title":"Ball Joints","imageUrl":"public\\product\\5.webp"}
-]
 
 const Product = () => {
   const url = window.location.pathname.split('/')
   const productId = url?url[2]:''
   const [productData,setProductData] = useState()
-  const [footerText,setFooterText] = useState(["",""])
+  // const [footerText,setFooterText] = useState(["",""])
   console.log(productData)
   
   useEffect(() => {
@@ -60,13 +53,14 @@ const Product = () => {
             <div className="card-wrapper" key={product.id}>
               <div className="card">
                 <img src={baseUrl+product.image} alt={product.title}/>
-                <div className="title">{product.title}</div>
+                {product.title?<div className="title">{product.title}</div>:<></>}
               </div>
             </div>))}
             </div>
         </section>
+        {productData.rangeText?<p className="product-name-wrapper">{productData.rangeText}</p>:<></>}
         <section className="adv-list">
-          <p className="section-title">Midori Advantages at a Glance
+          <p className="section-title">{productData.advantageText}
           </p>
           <p className='advantageUL' 
             dangerouslySetInnerHTML={{__html:productData.advantages}}>
@@ -75,13 +69,8 @@ const Product = () => {
         </section>
       </main>
       <footer className="midori-footer">
-        <div className="white"></div>
         <img src={baseUrl+productData.footerUrl} className='footerImage'
           alt={productData.title}/>
-        <div className="p-wrapper">
-          <p>{footerText[0]}</p>
-          <p>{footerText[1]}</p>
-        </div>
       </footer>
 
     </div>

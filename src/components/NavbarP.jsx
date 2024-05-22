@@ -15,7 +15,6 @@ const NavbarP = (props) => {
   return (
     <div className="midori-header">
       <img className="img-web" src={props.baseUrl+data.imageUrl} alt={data.title}/>
-      <img className="img-mobile" src={props.baseUrl+data.imageUrl} alt={data.title}/>
 
       <label className="hamburger-menu">
         <input id="hamburger-btn" type="checkbox" onChange={(e)=>openMenu(e.target.checked)}/>
@@ -34,7 +33,6 @@ const NavbarP = (props) => {
         </ul>
         {OpenSub?<Submenu/>:<></>}
       </div>
-      <img src="/public/cover.png" className='imageCover'/>
   </div>
 
   )

@@ -1,5 +1,3 @@
-
-
 @font-face {
   font-family: "bitter Pro";
   src: url("../fonts/BitterPro-Black.ttf") format("embedded-opentype"),
@@ -88,30 +86,27 @@ body {
   flex-direction: column;
   width: 100%;
   height: 100vh;
-  background-image: url(./assets/img/banner/Home.webp);
+  background-image: url(../public/banners/img/banner/Home.webp);
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
   background-position: center;
 }
 .midori-au {
-  height: unset;
-  background-image: url(./assets/img/banner/about-us.webp);
+  background-image: url(../public/banners/img/banner/about-us.webp);
   background-size: cover;
 }
 .midori-product-steering {
-  height: unset;
+  height: auto;
   background-color: white;
   background-image: none;
 }
 .midori-cu {
-  height: 800px;
-  background-image: url(./assets/img/banner/contact-us.webp);
+  background-image: url(../public/banners/img/banner/contact-us.webp);
   background-size: cover;
   background-position: center;
 }
 .midori-sup {
-  height: fit-content;
   background-image: none;
 }
 /* Header */
@@ -135,6 +130,7 @@ body {
 }
 .midori-cu .midori-header {
   background-color: rgba(1, 46, 82);
+  padding-block: 2rem 1rem;
 }
 .midori-sup .midori-header {
   background-color: rgba(1, 46, 82);
@@ -164,7 +160,6 @@ body {
 }
 .midori-header .log-wrapper {
   width: 250px;
-  height: 145px;
 }
 .midori-header .log-wrapper img {
   width: 100%;
@@ -323,34 +318,42 @@ body {
   grid-row-gap: 20px;
   width: 94%;
   margin-inline: auto;
+  height: fit-content;
+  overflow: auto;
+  padding-top: 3rem;
 }
 .midori-au .midori-main .p-wrapper {
   width: 100%;
 
   p {
-    font-size: 1.38rem;
+    font-size: 1.5rem;
     color: #fffefe;
     font-family: "tahoma";
-    text-align: justify;
-    line-height: 1.8rem;
+    text-align: left;
+    line-height: 2.2rem;
+    margin-block: 1rem 0;
   }
 }
 .midori-au .midori-main .title-wrapper {
-  padding-inline: 10%;
+  width: 85%;
+  margin-inline: auto;
   color: #fffefe;
   grid-area: 2 / 1 / 3 / 3;
+  height: fit-content;
 
   h1 {
     font-family: "Bitter Pro";
-    font-size: 3.19rem;
+    font-size: 3rem;
     font-weight: 800;
+    margin: 0;
   }
 
   p {
-    font-size: 1.56rem;
+    font-size: 1.5rem;
     font-family: "tahoma";
     text-align: left;
     line-height: 2.5rem;
+    margin: 0;
   }
 }
 
@@ -369,10 +372,11 @@ body {
 
   p {
     color: var(--font-color-600);
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-family: "tahoma";
     font-weight: 500;
     width: 80%;
+    margin-top: 0;
   }
 }
 .midori-cu .midori-main .cu-form {
@@ -382,14 +386,10 @@ body {
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
-  .mobile{
-    display: none;
-  }
-
 }
 .midori-cu .midori-main .cu-form input {
   width: 80%;
-  height: 62px;
+  height: 50px;
   background-color: #efefef;
   border: 1.5px solid #b0b0b0;
   padding-inline: 1rem;
@@ -402,7 +402,7 @@ body {
 }
 .midori-cu .midori-main .cu-form textarea {
   width: 80%;
-  height: 147px;
+  height: 130px;
   background-color: #efefef;
   border: 1.5px solid #b0b0b0;
   font-size: 1.31rem;
@@ -421,13 +421,13 @@ body {
 
 .midori-sup .midori-main {
   width: 100%;
+  height: 100%;
   display: flex;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: center;
   flex-direction: column;
-  padding-block: 2rem;
-  gap: 3rem;
-  background-image: url(./assets/img/banner/support.webp);
+  gap: 1rem;
+  background-image: url(../public/banners/img/banner/support.webp);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
@@ -437,12 +437,12 @@ body {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
   width: 95%;
   margin-inline: auto;
 }
 .midori-sup .midori-main .sup-item .icon-wrapper {
-  width: 70px;
+  width: 50px;
 
   img {
     width: 100%;
@@ -458,29 +458,33 @@ body {
 
   p:nth-child(1) {
     font-family: "Bitter Pro";
-    font-weight: 800;
-    font-size: 2.8rem;
+    font-weight: 600;
+    font-size: 2rem;
     margin: 0;
   }
   p:nth-child(2) {
     font-family: "Tahoma";
     font-size: 1.5rem;
+    margin-bottom: 0;
   }
 }
-
+.midori-product-steering .midori-main {
+  width: 100%;
+}
 .midori-product-steering .midori-main .product-sec {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
-  width: 100%;
+  width: 80%;
+  margin-inline: auto;
 
   .section-title {
     width: 100%;
     color: var(--font-color-600);
     font-weight: 800;
     font-family: "Bitter Pro";
-    font-size: 5rem;
+    font-size: 4.531rem;
     text-align: center;
     padding: 0;
     margin-block: 0 2rem;
@@ -489,14 +493,14 @@ body {
 .midori-product-steering .product-sec .container {
   display: flex;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 0.5rem 0px;
+  gap: 2rem 1rem;
   width: 100%;
 }
 .midori-product-steering .product-sec .container .card-wrapper {
   padding: 0.3rem 0.5rem;
-  width: calc(100% / 5);
+  width: 200px;
   min-width: 200px;
 }
 .midori-product-steering .product-sec .container .card {
@@ -517,11 +521,11 @@ body {
     color: #cbcbcb;
     font-weight: 800;
     font-family: "Bitter Pro";
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     padding: 0.3rem 0.1rem;
     border-radius: 999px;
     text-align: center;
-    width: 95%;
+    width: 90%;
     min-width: 200px;
   }
 }
@@ -531,6 +535,11 @@ body {
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
+
+  img{
+    width: 350px;
+    margin: 3rem auto;
+  }
 
   .section-title {
     width: 100%;
@@ -545,7 +554,9 @@ body {
 
 .midori-product-steering .midori-main .adv-list ul {
   list-style: none;
-  width: 60%;
+  width: 100%;
+  margin-inline: auto;
+  padding-left: 10rem;
 }
 .midori-product-steering .midori-main .adv-list li {
   width: 100%;
@@ -553,16 +564,19 @@ body {
   font-family: "Tahoma";
   font-size: 2rem;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   gap: 1.5rem;
 
-  .circle {
-    background-color: var(--font-color-600);
-    min-width: 20px;
-    aspect-ratio: 1;
-    border-radius: 50%;
-  }
+}
+.midori-product-steering .midori-main .adv-list li::before{
+  content: "";
+  width: 25px;
+  height: 25px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--font-color-600);
+  margin-top: 0.3rem;
 }
 /* Footer */
 .midori-product-steering .midori-footer {
@@ -576,13 +590,13 @@ body {
 
   .p-wrapper {
     width: 120%;
-    height: 40%;
+    height: 100%;
     position: absolute;
-    bottom: -25%;
-    left: -90px;
-    transform: rotate(13deg);
+    bottom: -80%;
+    left: -100px;
+    transform: rotate(7deg);
     background-color: var(--main-color-700);
-    padding-left: 50px;
+    padding-left: 75px;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -596,14 +610,14 @@ body {
 }
 .midori-product-steering .midori-footer .p-wrapper {
   p:nth-child(1) {
-    font-size: 4rem;
+    font-size: 3rem;
     color: #f8d022;
     font-weight: 800;
     font-family: "Bitter Pro";
     margin: 0;
   }
   p:nth-child(2) {
-    font-size: 3rem;
+    font-size: 2rem;
     color: #d1ab19;
     font-family: "Ebrima";
     margin: 0;
@@ -620,14 +634,40 @@ body {
   background-color: white;
   transform: rotate(13deg);
 }
+.product-name-wrapper {
+  background-color: var(--font-color-600);
+  color: #cbcbcb;
+  font-weight: 800;
+  font-family: "Bitter Pro";
+  font-size: 1.5rem;
+  padding: 1rem 1rem;
+  border-radius: 1.5rem;
+  text-align: center;
+  width: fit-content;
+  min-width: 200px;
+  margin: 1rem auto;
+  max-width: 60%;
+  text-align: justify;
+}
 /* Utility classes */
 .display-on {
   display: flex !important;
 }
-.midori-product-steering .midori-header .img-mobile {
-  display: none !important;
-}
 /* Responsive Styles.............................. */
+@media (max-width: 1000px) {
+  .midori-product-steering .midori-footer {
+    .p-wrapper {
+      padding-left: 80px;
+      bottom: -70%;
+      p:nth-child(1) {
+        font-size: 3rem;
+      }
+      p:nth-child(2) {
+        font-size: 2.2rem;
+      }
+    }
+  }
+}
 
 @media (max-width: 750px) {
   .midori-header .hamburger-menu {
@@ -818,10 +858,7 @@ body {
     }
 
     .img-web {
-      display: none;
-    }
-    .img-mobile {
-      display: block !important;
+      display: block;
     }
   }
   .midori-product-steering .midori-main .product-sec {
@@ -835,18 +872,19 @@ body {
       width: 90%;
 
       .card-wrapper {
-        width: 60%;
         margin-bottom: 1rem;
       }
     }
   }
   .midori-product-steering .midori-main .adv-list {
+
     .section-title {
       font-size: 3rem;
     }
     ul {
       margin-inline: 0 auto;
       width: 100%;
+      padding-left: 1rem;
 
       br {
         display: none;
@@ -855,27 +893,12 @@ body {
   }
   .midori-product-steering .midori-footer {
     .p-wrapper {
-      padding-left: 80px;
-
+      bottom: -80%;
       p:nth-child(1) {
         font-size: 2rem;
       }
       p:nth-child(2) {
-        font-size: 1.2rem;
-      }
-    }
-  }
-}
-@media (max-width: 1000px) {
-  .midori-product-steering .midori-footer {
-    .p-wrapper {
-      padding-left: 60px;
-      bottom: -20%;
-      p:nth-child(1) {
-        font-size: 3rem;
-      }
-      p:nth-child(2) {
-        font-size: 2.2rem;
+        font-size: 1.4rem;
       }
     }
   }
@@ -883,8 +906,8 @@ body {
 @media (max-width: 700px) {
   .midori-product-steering .midori-footer {
     .p-wrapper {
-      padding-left: 70px;
-      bottom: -20%;
+      padding-left: 90px;
+      bottom: -70%;
       p:nth-child(1) {
         font-size: 2rem;
       }
@@ -898,8 +921,8 @@ body {
   .midori-product-steering .midori-footer {
     .p-wrapper {
       width: 130%;
-      padding-left: 80px;
-      bottom: -15%;
+      padding-left: 90px;
+      bottom: -70%;
       p:nth-child(1) {
         font-size: 1.7rem;
       }
@@ -912,63 +935,15 @@ body {
 @media (max-width: 360px) {
   .midori-product-steering .midori-footer {
     .p-wrapper {
-      width: 130%;
-      padding-left: 80px;
-      bottom: -15%;
+      width: 150%;
+      padding-left: 95px;
+      bottom: -70%;
       p:nth-child(1) {
-        font-size: 1.4rem;
+        font-size: 0.9rem;
       }
       p:nth-child(2) {
-        font-size: 1rem;
+        font-size: 0.6rem;
       }
     }
   }
-}
-.midori-home {
-  background-color: #333;
-}
-
-
-.advantageUL{
-  width: 100%;
-}
-.advantageUL ul{
-  width: 85%;
-}
-.advantageUL li{
-  display: list-item !important;
-  list-style: disc;
-}
-.advantageUL li::marker{
-  background-color: var(--font-color-600);
-    min-width: 20px;
-    aspect-ratio: 1;
-    border-radius: 50%;
-  
-}
-.mainTitle{
-  position: absolute;
-  bottom: 140px;
-  font-size: 50px;
-  color: #eee;
-  opacity: 0.7;
-  font-family: sans-serif;
-}
-.img-web{
-  max-height: 120vh;
-  object-fit: cover;
-  /*filter: sepia(100%) hue-rotate(150deg) saturate(300%) brightness(.7);*/
-}
-.footerImage{
-  /*filter: sepia(100%) hue-rotate(10deg) saturate(300%) brightness(.7);*/
-}
-.imageCover{
-  position: absolute;
-  bottom: 0px;
-  width: 100%;
-}
-
-.midori-main{
-  width: 70%;
-  margin: auto;
 }
