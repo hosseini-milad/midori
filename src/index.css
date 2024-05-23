@@ -679,6 +679,9 @@ body {
 }
 
 @media (max-width: 750px) {
+  .product-name-wrapper{
+    text-align: center !important;
+  }
   .midori-header .hamburger-menu {
     top: 15px !important;
     right: 10px;
