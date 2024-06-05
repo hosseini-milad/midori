@@ -10,7 +10,7 @@ const Submenu = () => {
         <li className="menu-item"><a href="/products/SteeringPumps">Steering Pumps</a></li>
         <li className="menu-item"><a href="/products/SuspensionParts">Suspension Parts</a></li>
         <li className="menu-item"><a href="/products/MetalRubberParts">Metal-Rubber Parts</a></li>
-        <li className="menu-item"><a href="/productsmain/BearingsWheelHub">Bearings and Wheel Hub</a></li>
+        <li className="menu-item"><a href="/products/BearingsWheelHub">Bearings and Wheel Hub</a></li>
         <li className="menu-item"><a href="/products/Sensors">Sensors</a></li>
         <li className="menu-item"><a href="/products/HeatingCoolingParts">Heating and Cooling Parts</a></li>
       </ul>

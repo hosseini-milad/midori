@@ -3,14 +3,14 @@ import Submenu from "../components/Submenu.jsx"
 import productcards from "../productcards.json"
 const baseUrl="https://midoriadmin.dkmehr.com"
 import logo from "../assets/img/midori-logo.svg"
-import footer from "../assets/img/Product-Bearings-and-Wheel-Hub-footer.jpg"
-import header from "../assets/img/Product-Bearings-and-Wheel-Hub--banner.jpg"
-import p1 from "../assets/img/products/2.jpg"
-import p2 from "../assets/img/products/3.jpg"
-import p3 from "../assets/img/products/4.jpg"
-import p4 from "../assets/img/products/5.jpg"
-import p5 from "../assets/img/products/6.jpg"
-import p6 from "../assets/img/products/7.jpg"
+import footer from "../assets/img/Suspension-Parts-Footer.jpg"
+import header from "../assets/img/Suspension-Parts-Header.jpg"
+import p1 from "../assets/img/products/sp2.jpg"
+import p2 from "../assets/img/products/sp3.jpg"
+import p3 from "../assets/img/products/sp4.jpg"
+import p4 from "../assets/img/products/sp5.jpg"
+import p5 from "../assets/img/products/sp6.jpg"
+import p6 from "../assets/img/products/sp7.jpg"
 
 const Product = () => {
   const [Open , setOpen] = useState(false);
@@ -112,75 +112,51 @@ const Product = () => {
       </div>
     </div>
     <main className="midori-main">
-      <section className="product-sec">
-        <p className="section-title">Product Range</p>
-      </section>
-      <p className="product-name-wrapper">Deep Groove Ball Bearing, Tapered Roller Bearing, Clutch Release Bearing, Timing Tensioner, Driveshaft Support Bearings, Driveshaft Support Bearings, Wheel Hub Assembly</p>
+    <section className="product-sec">
+          <p className="section-title">Product Range</p>
+          <div className="container sp-container">
+            
+            <div className="card-wrapper">
+              <div className="card">
+                <img src={p1} alt={p1}/>
+              </div>
+            </div>
+            <div className="card-wrapper">
+              <div className="card">
+                <img src={p2} alt={p2}/>
+              </div>
+            </div>
+            <div className="card-wrapper">
+              <div className="card">
+                <img src={p3} alt={p3}/>
+              </div>
+            </div>
+            <div className="card-wrapper">
+              <div className="card">
+                <img src={p4} alt={p4}/>
+              </div>
+            </div>
+            <div className="card-wrapper">
+              <div className="card">
+                <img src={p5} alt={p5}/>
+              </div>
+            </div>
+            <div className="card-wrapper">
+              <div className="card">
+                <img src={p6} alt={p6}/>
+              </div>
+            </div>
+          </div>
+        </section>
+      <p className="product-name-wrapper">Shock Absorber, Strut, Strut Mount and Bearing </p>
       <section className="adv-list">
-        <p className="section-title">Deep Groove Ball Bearing Key Characteristics 
+        <p className="section-title">Suspension Parts Key Characteristics: 
         </p>
-        <img src={p1} alt="product" />
         <ul>
-          <li>Axial loads in both directions </li>
-          <li>Low frictional torque and high-speed components ideal </li>
-          <li>Minimum noise and vibration</li>
-        </ul>
-      </section>
-      <section className="adv-list">
-        <p className="section-title">Tapered Roller Bearing Key Characteristics  
-        </p>
-        <img src={p2} alt="product" />
-        <ul>
-          <li>Optimized bearing performance </li>
-          <li>Precision-matched cup and cone handle radial and thrust loads</li>
-          <li>Design to prevent premature bearing failures </li>
-        </ul>
-      </section>
-      <section className="adv-list">
-        <p className="section-title">Clutch Release Bearing Key Characteristics   
-        </p>
-        <img src={p3} alt="product" />
-        <ul>
-          <li>Allows maximum speeds at maximum loads.</li>
-          <li>Resists wear for longest durability. </li>
-          <li>Noise and Vibration Minimized</li>
-          <li>Self-aligning maximizes controls clutch conditions associated with misaligned drivetrain components.</li>
-          <li>Efficient sealing system keeps contaminants out and grease in </li>
-        </ul>
-      </section>
-      <section className="adv-list">
-        <p className="section-title">Timing Tensioner Key Characteristics    
-        </p>
-        <img src={p4} alt="product" />
-        <ul>
-          <li>Accurate dimensional bearing clearance</li>
-          <li>Damping integrated into the design</li>
-          <li>Round or angled wire spring</li>
-          <li>Heat resistant pulley seal (-40° to +150°c)</li>
-          <li>High load capacity pulley</li>
-          <li>Premium quality bearing grease </li>
-        </ul>
-      </section>
-      <section className="adv-list">
-        <p className="section-title">Driveshaft Support Bearings Key Characteristics    
-        </p>
-        <img src={p5} alt="product" />
-        <ul>
-          <li>Pre-lubricated with metal reinforced seals is applied to prevent contamination.</li>
-          <li>Design to isolate the driveshaft from damaging vibration</li>
-          <li>High quality steel or aluminum frames enable added strength and long life in severe climate condition </li>
-        </ul>
-      </section>
-      <section className="adv-list">
-        <p className="section-title">Wheel Hub Assembly Key Characteristics    
-        </p>
-        <img src={p6} alt="product" />
-        <ul>
-          <li>Extreme Heat Resistance</li>
-          <li>Maximized Efficiency </li>
-          <li>Extended Service Life through low friction design</li>
-          <li>Operational confidence </li>
-          <li>Minimized temperature peaks</li>
+          <li>Engineered to Resist Early Part Wear</li>
+          <li>Electro-Mechanical Coating </li>
+          <li>Reliable Protection Against Abrasives</li>
+          <li>Salt Spray Tested </li>
         </ul>
       </section>
     </main>

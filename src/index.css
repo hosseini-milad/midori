@@ -539,7 +539,7 @@ body {
   justify-content: flex-start;
   flex-direction: column;
 
-  img{
+  img {
     width: 350px;
     margin: 3rem auto;
   }
@@ -570,9 +570,8 @@ body {
   align-items: flex-start;
   justify-content: flex-start;
   gap: 1.5rem;
-
 }
-.midori-product-steering .midori-main .adv-list li::before{
+.midori-product-steering .midori-main .adv-list li::before {
   content: "";
   width: 25px;
   height: 25px;
@@ -658,10 +657,10 @@ body {
 }
 /* Responsive Styles.............................. */
 @media (max-width: 1000px) {
-  .midori-product-steering .midori-header .log-wrapper{
+  .midori-product-steering .midori-header .log-wrapper {
     top: 50px;
   }
-  .midori-product-steering .midori-header .hamburger-menu{
+  .midori-product-steering .midori-header .hamburger-menu {
     top: 50px;
   }
   .midori-product-steering .midori-footer {
@@ -679,7 +678,7 @@ body {
 }
 
 @media (max-width: 750px) {
-  .product-name-wrapper{
+  .product-name-wrapper {
     text-align: center !important;
   }
   .midori-header .hamburger-menu {
@@ -814,7 +813,6 @@ body {
   }
   /* support */
   .midori-sup {
-
     height: auto;
     .hamburger-menu {
       top: 20px;
@@ -891,7 +889,6 @@ body {
     }
   }
   .midori-product-steering .midori-main .adv-list {
-
     .section-title {
       font-size: 3rem;
     }
@@ -918,10 +915,10 @@ body {
   }
 }
 @media (max-width: 700px) {
-  html{
+  html {
     font-size: 70%;
   }
-  .midori-product-steering .midori-main .adv-list li::before{
+  .midori-product-steering .midori-main .adv-list li::before {
     width: 20px;
     height: 20px;
   }
@@ -939,7 +936,7 @@ body {
   }
 }
 @media (max-width: 500px) {
-  .midori-product-steering .midori-header .log-wrapper{
+  .midori-product-steering .midori-header .log-wrapper {
     width: 120px;
     top: 12px;
   }
@@ -958,7 +955,7 @@ body {
   }
 }
 @media (max-width: 360px) {
-  html{
+  html {
     font-size: 60%;
   }
   .midori-product-steering .midori-footer {
@@ -974,6 +971,7 @@ body {
       }
     }
   }
-  
-    
+}
+.midori-product-steering .product-sec .sp-container {
+  width:500px;
 }
