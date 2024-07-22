@@ -86,7 +86,6 @@ body {
   flex-direction: column;
   width: 100%;
   height: 100vh;
-  background-image: url(../public/banners/img/banner/Home.webp);
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
@@ -301,15 +300,23 @@ body {
 }
 /* Main Content */
 .midori-home .midori-main {
-  position: absolute;
-  bottom: 30px;
-  right: 30px;
+  position: relative;
+  width: 100%;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   p {
     color: var(--main-color-500);
     font-family: "Orbitron";
     font-weight: 600;
     font-size: 1.4rem;
+    margin-left: 50px;
+    margin-top: 0;
+  }
+  img{
+    width: 40%;
   }
 }
 
@@ -697,6 +704,21 @@ body {
   /* Home */
   .midori-home {
     background-image: url(../public/banners/mobile/home-mobile.webp);
+
+    .midori-main {
+      flex-direction:column-reverse;
+
+      margin-bottom: 4rem;
+
+      p{
+        width: 100%;
+        margin-inline: auto;
+        text-align: center;
+      }
+      img{
+        width: 100%;
+      }
+    }
   }
   .midori-home .midori-header {
     align-items: flex-end;
@@ -974,4 +996,28 @@ body {
 }
 .midori-product-steering .product-sec .sp-container {
   width:500px;
+}
+.indicators {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+}
+
+.indicator {
+  background-color: #ff641f;
+  height: 0.8rem;
+  width: 0.8rem;
+  border-radius: 100%;
+  border: none;
+  outline: none;
+  margin: 0 0.2rem;
+  cursor: pointer;
+}
+
+.indicator-inactive {
+  background-color:#fed00b;
 }
