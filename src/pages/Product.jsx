@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import NavbarP from "../components/NavbarP.jsx"
 import productcards from "../productcards.json"
-const baseUrl="https://midoriadmin.dkmehr.com"
+//const baseUrl="https://midoriadmin.dkmehr.com"
+const baseUrl="https://admin.midoriparts.com"
 
 const Product = () => {
   const url = window.location.pathname.split('/')
