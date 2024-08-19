@@ -936,9 +936,18 @@ body {
     }
   }
 }
+@media (max-width: 900px) {
+  .midori-home{
+    background-color: #4d6ca3;
+    background-position: bottom  center;
+  }
+}
 @media (max-width: 700px) {
   html {
     font-size: 70%;
+  }
+  .midori-home{
+    background-position:center;
   }
   .midori-product-steering .midori-main .adv-list li::before {
     width: 20px;
