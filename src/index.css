@@ -706,14 +706,16 @@ body {
     background-image: url(../public/banners/mobile/home-mobile.webp);
 
     .midori-main {
-      flex-direction:column-reverse;
+      flex-direction:column;
 
-      margin-bottom: 4rem;
+      margin-bottom:2rem;
 
       p{
-        width: 100%;
+        width:90%;
         margin-inline: auto;
-        text-align: center;
+        text-align: left;
+        margin-bottom: 0;
+        font-size: 0.8rem;
       }
       img{
         width: 100%;
@@ -938,16 +940,19 @@ body {
 }
 @media (max-width: 900px) {
   .midori-home{
-    background-color: #4d6ca3;
-    background-position: bottom  center;
+    background-color:#4b87b9;
+    background-position: bottom 20px center;
   }
 }
 @media (max-width: 700px) {
   html {
     font-size: 70%;
   }
-  .midori-home{
-    background-position:center;
+  .midori-home .midori-header .log-wrapper{
+    width: 100px;
+    position: absolute;
+    top: 40px;
+    left: 40px;
   }
   .midori-product-steering .midori-main .adv-list li::before {
     width: 20px;
