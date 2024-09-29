@@ -11,6 +11,10 @@ const tabletrans ={
         english: "Classes",
         persian: "کلاس ها"
     },
+    footerText:{
+        english: "Footer Text",
+        persian: "متن فوتر"
+    },
     
     activeText:{
         english: "Active",
@@ -325,6 +329,10 @@ const tabletrans ={
     description:{
         english:"Description",
         persian:"توضیحات"
+    },
+    advantages:{
+        english:"Advantages",
+        persian:"مزایا"
     },
     fullDescription:{
         english:"Full Description",

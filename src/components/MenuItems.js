@@ -7,10 +7,8 @@ function MenuItems(props){
     const menu = props.menu
     const [showItem,setShowItem] = useState(1)
     const checkAllow=(submenu)=>{
-        if(access==="manager")return(1)
-
-        return(profile&&profile.find(item=>item.title===submenu['english']))
-    }
+        return(1)
+}
     return(
         menu.children&&menu.children.length?
         <li className="nav-item mt-3">

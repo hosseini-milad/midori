@@ -1,15 +1,17 @@
 
 const env={
-    //siteApi:'http://localhost:6090/api',
-    siteApi:'https://hypadmin.dkmehr.com/api',
+    //siteApi:'http://localhost:1020/api',
+    //siteApi:'https://midoriadmin.dkmehr.com/api',
+    siteApi:'https://admin.midoriparts.com/api',
     
-    //siteApiUrl:'http://localhost:6090',
-    siteApiUrl:'https://hypadmin.dkmehr.com',
-    cookieName:'hyp-login',
+    //siteApiUrl:'http://localhost:1020',
+    //siteApiUrl:'https://midoriadmin.dkmehr.com',
+    siteApiUrl:'https://admin.midoriparts.com',
+    cookieName:'mid-login',
     //cookieName:'panel-login',
     //cookieName:'mehr-login',
     
-    cookieLang:'hyp-lang',
+    cookieLang:'mid-lang',
     //cookieLang:'panel-lang',
     //cookieLang:'mehr-lang',
 

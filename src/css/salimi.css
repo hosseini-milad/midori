@@ -1345,7 +1345,6 @@ input:checked + .switch-label:after {
 .user-list th {
   line-height: 1.5rem;
   display: table-cell;
-  text-align: center;
   font-size: 14px;
   color: rgb(99, 115, 129);
   font-weight: 600;

@@ -4,14 +4,13 @@ import tabletrans from '../../../translate/tables';
 import ImageSimple from '../../../components/Button/ImageSimple';
 import env from '../../../env';
 import RichTextEditor from '../../../components/Button/RichTextEditor';
-import ProductImportButton from './ProductImport';
 
 function ProductName(props){
     const content =props.content?props.content.filter:''
     
     const [image,setImage]= useState();
-    const [thumb,setThumb]= useState();
-    const [imageUrl,setImageUrl] = useState('')
+    const [footer,setFooter]= useState();
+    //const [imageUrl,setImageUrl] = useState('')
     useEffect(() => {
       const postOptions={
           method:'post',
@@ -23,7 +22,7 @@ function ProductName(props){
                             folderName:"product"})
       }//URL.createObjectURL(image)
       //console.log(postOptions)
-      image&&fetch(env.siteApi+"/panel/user/upload",postOptions)
+      image&&fetch(env.siteApi+"/panel/product/upload",postOptions)
           .then(res => res.json())
           .then(
           (result) => {
@@ -47,18 +46,18 @@ function ProductName(props){
           headers: {
               "content-type": "application/json"
           },
-          body:JSON.stringify({base64image:thumb&&thumb.base64,
-                              imgName:thumb&&thumb.fileName,
+          body:JSON.stringify({base64image:footer&&footer.base64,
+                              imgName:footer&&footer.fileName,
                             folderName:"product"})
       }//URL.createObjectURL(image)
       //console.log(postOptions)
-      thumb&&fetch(env.siteApi+"/panel/user/upload",postOptions)
+      footer&&fetch(env.siteApi+"/panel/product/upload",postOptions)
           .then(res => res.json())
           .then(
           (result) => {
             props.setProductChange(prevState => ({
               ...prevState,
-              thumbUrl:result.url
+              footerUrl:result.url
             }))
           },
           (error) => {
@@ -69,7 +68,7 @@ function ProductName(props){
           console.log(error)
           })
 
-      },[thumb])
+      },[footer])
     
       //console.log(props.productChange)
     return(
@@ -77,9 +76,7 @@ function ProductName(props){
           <div className="row-title">
             <h4>{tabletrans.details[props.lang]}</h4>
             <p>{tabletrans.titleShort[props.lang]}</p>
-            <ProductImportButton setProductChange={props.setProductChange}
-                  sku={content.sku} setUpdateContent={props.setUpdateContent}
-                  setContent={props.setContent} setImage={setImage} setThumb={setThumb}/>
+            
           </div>
           <div className="row-box">
             <div className="details-wrapper">
@@ -89,59 +86,73 @@ function ProductName(props){
                     ...prevState,
                     title:e
                   }))}/>
-                <StyleInput title={tabletrans.productenName[props.lang]} direction={props.direction}
-                 class={"formInput"} defaultValue={content?content.enTitle:''} 
+                  <StyleInput title={tabletrans.productCode[props.lang]} direction={props.direction}
+                 class={"formInput"} defaultValue={content?content.url:''} 
                  action={(e)=>props.setProductChange(prevState => ({
                     ...prevState,
-                    enTitle:e
+                    url:e
                   }))}/>
-                  <StyleInput title={tabletrans.productUrl[props.lang]} direction={props.direction}
-                   class={"formInput"} defaultValue={content?content.productUrl:''} 
-                   action={(e)=>props.setProductChange(prevState => ({
-                      ...prevState,
-                      productUrl:e
-                    }))}/>
-                    <StyleInput title={tabletrans.metaTitle[props.lang]} direction={props.direction}
-                   class={"formInput"} defaultValue={content?content.metaTitle:''} 
-                   action={(e)=>props.setProductChange(prevState => ({
-                      ...prevState,
-                      metaTitle:e
-                    }))}/>
+                  <StyleInput title="range Text" direction={props.direction}
+                 class={"formInput"} defaultValue={content?content.rangeText:''} 
+                 action={(e)=>props.setProductChange(prevState => ({
+                    ...prevState,
+                    rangeText:e
+                  }))}/>
+                  <StyleInput title="advantage Text" direction={props.direction}
+                 class={"formInput"} defaultValue={content?content.advantageText:''} 
+                 action={(e)=>props.setProductChange(prevState => ({
+                    ...prevState,
+                    advantageText:e
+                  }))}/>
+                <StyleInput title={tabletrans.footerText[props.lang]} direction={props.direction}
+                 class={"formInput"} defaultValue={content?content.footer:''} 
+                 action={(e)=>props.setProductChange(prevState => ({
+                    ...prevState,
+                    footer:e
+                  }))}/>
                 
               <div className="contentTextEditor">
                 <textarea placeholder={tabletrans.productMeta[props.lang]} 
-                defaultValue={content?content.productMeta:''} 
-                action={(e)=>props.setProductChange(prevState => ({
-                   ...prevState,
-                   productMeta:e
+                defaultValue={content?content.metaTitle:''} 
+                onChange={(e)=>props.setProductChange(prevState => ({
+                   ...prevState, 
+                   metaTitle:e.target.value
                  }))}/>
               </div>
               <div className="contentTextEditor">
-                <label for="name">{tabletrans.description[props.lang]}</label>
-                <RichTextEditor content={content} value={"description"}
+                <label htmlFor="name">{tabletrans.advantages[props.lang]}</label>
+                <RichTextEditor content={content} value={"advantages"}
                   setProductChange={props.setProductChange} 
                   action={(e)=>props.setProductChange(prevState => ({
                     ...prevState,
-                    description:e
+                    advantages:e
                     }))} height={200}/>
               </div>
-              <div className="contentTextEditor">
-                <label for="name">{tabletrans.fullDescription[props.lang]}</label>
+              {/*<div className="contentTextEditor">
+                <label htmlFor="name">{tabletrans.fullDescription[props.lang]}</label>
                 <RichTextEditor content={content} value={"fullDesc"}
                   setProductChange={props.setProductChange} 
                   action={(e)=>props.setProductChange(prevState => ({
                     ...prevState,
                     fullDesc:e
                     }))}/>
-                  </div>
+                  </div>*/}
               <hr/>
               <div className="images">
                 <h5>{tabletrans.images[props.lang]}</h5>
                 <ImageSimple cardName="Input Image" imageGallery={[]} 
-                    setImage={setImage} setImageUrl={setImageUrl} part={1}
-                    setThumb={setThumb}/>
+                    setImage={setImage} part={1}
+                    />
                 <img src={props.productChange.imageUrl?env.siteApiUrl+props.productChange.imageUrl:
                   (content?(env.siteApiUrl+content.imageUrl):'')} 
+                  alt={content?content.title:env.default}/>
+              </div>
+              <div className="images">
+                <h5>Footer image</h5>
+                <ImageSimple cardName="Input Image" imageGallery={[]} 
+                    setImage={setFooter} part={2}/>
+                <img src={props.productChange.footerUrl?env.siteApiUrl+props.productChange.footerUrl:
+                  (content?(env.siteApiUrl+content.footerUrl):'')} 
                   alt={content?content.title:env.default}/>
               </div>
             </div>

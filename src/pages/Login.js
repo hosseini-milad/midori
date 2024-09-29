@@ -33,7 +33,20 @@ function Login(props){
           }
           else{
             setUserLogin(result)
-            setAccess(1)
+            const user= result.user
+            const cookies = new Cookies();
+              const cookieData = {
+                  userId:user._id,
+                  profile:user.access,
+                  profileClass:user.profile,
+                  name:user.cName+" "+user.sName,
+                  date:Date.now(),
+                  token:user.token,
+                  username:(user.cName+" "+user.sName)
+              }
+              //console.log(cookieData)
+              cookies.set(env.cookieName,cookieData, { path: '/' });
+              window.location.href=("/")
           }
           
       },
@@ -41,48 +54,6 @@ function Login(props){
           console.log(error)
       })
   }
-  useEffect(()=>{
-    if(!access)return
-    var postOptions={
-      method:'get',
-      headers: {'Content-Type': 'application/json',
-      "x-access-token":userLogin&&userLogin.token,
-      "userId":userLogin&&userLogin._id}
-    }
-    console.log(postOptions)
-fetch(env.siteApi + "/panel/user/allow-menu",postOptions)
-.then(res => res.json())
-.then(
-  (result) => {
-    if(!result.error)
-    {
-      console.log(user)
-      var user = userLogin?userLogin:result
-              const cookies = new Cookies();
-              const cookieData = {
-                  userId:user._id,
-                  access:user.access,
-                  profile:result.access,
-                  profileClass:user.profile,
-                  name:user.cName+" "+user.sName,
-                  date:user.date,
-                  token:user.token,
-                  username:(user.cName+" "+result.sName)
-              }
-              //console.log(cookieData)
-              cookies.set(env.cookieName,cookieData, { path: '/' });
-              window.location.href=("/")
-      //setAllowMenu(result.data)
-    }
-    else console.log(result)
-  },
-    (error) => {
-      console.log(error);
-    }
-)  
-    
-    
-  },[access])
     return(
         <main className="main-content  mt-0" style={{direction:direction}}>
           <div className="page-header align-items-start min-vh-100" style={{backgroundImage: "url('https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80')"}}>

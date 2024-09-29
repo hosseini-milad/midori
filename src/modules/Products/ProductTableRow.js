@@ -8,11 +8,6 @@ function ProductTableRow(props){
   const [checkState,setCheckState] = useState(false)
   const activeAcc = props.index===props.detail
   const product=props.product
-  const stockId=props.stockId
-  var newStockCount = (product.countTotal.length?product.countTotal:'')
-  var stockIndex = stockId?product.countTotal.findIndex(item=>item.Stock==stockId.StockID):-1
-  if(newStockCount&&stockIndex!==-1) newStockCount = newStockCount[stockIndex].quantity
-  if(newStockCount&&stockIndex==-1) newStockCount="ناموجود"
   return(<React.Fragment>
         <tr 
             className={activeAcc?"activeAccordion":"accordion"}>
@@ -22,39 +17,19 @@ function ProductTableRow(props){
             
             <td>
               <div className="cu-avatar">
-                  <img src={product.thumbUrl?(env.siteApiUrl+product.thumbUrl):env.defaultProduct} 
+                  <img src={product.imageUrl?(env.siteApiUrl+product.imageUrl):env.defaultProduct} 
                   alt={product?product.title:"default"}/>
                   <div className="cu-name" onClick={()=>
                   window.location.href="/products/detail/"+product._id}>
                     <p className="name">{product.title}</p>
                     <p className="email">{product.sku}</p>
                   </div>
-                  {product.moreInformation?
-                    <i className="fa fa-comment-o" title={product.moreInformation}></i>:<></>}
                 </div>
               </td>
+              
               <td>
-                <div className="order-num">
-                  <p>{product.brandInfo&&product.brandInfo[0]?
-                    product.brandInfo[0].title:product.brandId}</p>
-                </div>
-              </td>
-              <td>
-                <div className="order-num">
-                  {stockId?<span>{newStockCount}</span>:
-                  <><span>{product.count?product.count:"ناموجود"}</span>
-                  <small> {product.openOrderCount?"(متنظر تایید: "+
-                           product.openOrderCount+")":''}</small></>}
-                </div>
-              </td>
-              <td>
-                <div className="order-price">
-                  <p>{normalPriceCount(product.price&&product.price)}</p>
-                </div>
-              </td>
-              <td>
-                <div className="order-price">
-                  <p>{normalPriceCount(product.taxPrice&&product.taxPrice)}</p>
+                <div className="cu-avatar">
+                  <p>{product.metaTitle}</p>
                 </div>
               </td>
               <td>
@@ -63,28 +38,11 @@ function ProductTableRow(props){
               </td>
             <td>
               <div className="more-btn">
-              <i className={`tableIcon fas ${activeAcc?"fa-chevron-up":"fa-chevron-down"}`} 
-                onClick={()=>props.showDetail(activeAcc?"-1":props.index)} ></i>
-                <i className="tableIcon fas fa-edit" onClick={()=>
-                  window.location.href="/products/detail/"+product._id}></i>
-                <i className="tableIcon fas fa-ellipsis-v" 
-                  onClick={()=>setOpenOption(openOption?0:1)}></i>
+              
               </div>
-              {openOption?<div className="sub-more-menu">
-                <div className="sub-option sub-delete">
-                <i className="tableIcon fas fa-remove" style={{color: "#ff0000"}}></i>
-                  <p>Delete</p>
-                </div>
-                <div className="sub-option sub-edit">
-                  <i className="tableIcon fas fa-edit"></i>
-                  <p>Edit</p>
-                </div>
-              </div>:<></>}
+              
             </td>
           </tr>
-          {activeAcc?<tr className="sub-order">
-        <td colSpan="9"><ProductQuickDetail product={product}/></td></tr>
-          :<React.Fragment></React.Fragment>}
           </React.Fragment>
     )
 }

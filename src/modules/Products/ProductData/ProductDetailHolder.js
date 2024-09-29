@@ -5,18 +5,15 @@ import errortrans from "../../../translate/error"
 import tabletrans from "../../../translate/tables"
 import formtrans from "../../../translate/forms"
 import ProductName from './ProductName';
-import ProductSKU from './ProductSku';
-import ProductPrice from './ProductPrice';
+import ProductRange from './ProductRange';
 
 function ProductDetailHolder(props){
   const url = window.location.pathname.split('/')[3]
   const direction = props.lang?props.lang.dir:errortrans.defaultDir;
   const lang = props.lang?props.lang.lang:errortrans.defaultLang;
   const [error,setError] = useState({errorText:'',errorColor:"brown"})
-
+  const [rangeArray,setRangeArray] = useState([])
   const [content,setContent] = useState('')
-  const [filters,setFilters] = useState({})
-  const [purchase,setPurchase] = useState('')
   const [updateContent,setUpdateContent] = useState(0)
   const [productChange,setProductChange] = useState('')
   
@@ -43,7 +40,7 @@ fetch(env.siteApi + "/panel/product/fetch-product",postOptions)
           errorColor:"green"})
           setUpdateContent(1)
           setContent(result)
-          setFilters(result.filter?result.filter.filters:{})
+          setRangeArray(result.filter?result.filter.range:[])
         setTimeout(()=>setError({errorText:'',errorColor:"brown"}),2000)
       }
       
@@ -59,11 +56,9 @@ fetch(env.siteApi + "/panel/product/fetch-product",postOptions)
           method:'post',
           headers: {'Content-Type': 'application/json'},
           body:JSON.stringify({productId:url,
-            ...productChange,filters:filters})
+            ...productChange,range:rangeArray})
         }
-        console.log(filters)
-       console.log(postOptions)
-    fetch(env.siteApi + "/panel/product/editProduct",postOptions)
+    fetch(env.siteApi + "/panel/product/update-product",postOptions)
     .then(res => res.json())
     .then(
       (result) => {
@@ -85,13 +80,7 @@ fetch(env.siteApi + "/panel/product/fetch-product",postOptions)
       }
     )
   }
-  if(!updateContent)
-    return(
-      <div className='new-item'>
-        {env.loader}
-      </div>
-  )
-  else return(
+  return(
   <div className="new-item" style={{direction:direction}}>
       <div className="create-product">
       <h4>{tabletrans.createProduct[lang]}</h4>
@@ -99,11 +88,9 @@ fetch(env.siteApi + "/panel/product/fetch-product",postOptions)
         <ProductName direction={direction} lang={lang} content={content} 
           productChange={productChange} setProductChange={setProductChange}
           setUpdateContent={setUpdateContent} setContent={setContent}/>
-        {(url==="new"||content)?
-        <ProductSKU direction={direction} lang={lang} content={content} 
-          productChange={productChange} setProductChange={setProductChange}
-          setFilters={setFilters}/>:
-          <></>}
+        
+        <ProductRange direction={direction} lang={lang} 
+          rangeArray={rangeArray} setRangeArray={setRangeArray}/>
         {/*<ProductPrice direction={direction} lang={lang} content={content} 
           productChange={productChange} setProductChange={setProductChange}/>*/}
         <div className="create-btn-wrapper">

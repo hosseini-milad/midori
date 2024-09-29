@@ -55,98 +55,6 @@ function Products(props){
       }
       
   )},[filters])
-  const RefreshItems=async()=>{
-    const productList = content.full
-    setCounter(content.full.length)
-    /*for(var i=0;i<productList.length;i++){
-      const outData =await fetchData(productList[i].sku)
-      if(outData&&outData.success){
-        updateSite(productList[i]._id,outData)
-      }
-    }*/
-  }
-  useEffect(()=>{
-    if(!content||!content.full){
-      setCounter(0)
-      return
-    }
-    if(counter>content.full.length){
-      setCounter(0)
-      window.location.reload()
-    }
-    if(counter)
-      counterFunction()
-  },[counter])
-  const counterFunction=async()=>{
-    const outData =await fetchData(content.full[counter-1].sku)
-    
-    setTimeout(()=>setCounter(counter-1),3000)
-  }
-  const fetchData=async(sku)=>{
-      const postOptions={
-        method:'post',
-        headers: {
-            "content-type": "application/json"
-        },
-        body:JSON.stringify({productId:sku})
-      }//URL.createObjectURL(image)
-      //console.log(postOptions)
-      await fetch(env.siteApi+"/panel/product/updateProduct",postOptions)
-          .then(res => res.json())
-          .then(
-          (result) => {
-              if(result.data)
-                updateSite(content.full[counter-1]._id,result)
-          }
-          )
-          .catch((error)=>{
-          console.log(error)
-          })
-      }
-  const updateSite=async(productId,newData)=>{
-    const data = newData.data
-      const newConvertData ={
-        title:  data.title,
-        sku: data.sku,
-        enTitle:data.ename,
-        productUrl:data.product_url,
-        description:data.short,
-        fullDesc:data.tozihat,
-
-        metaTitle:data.meta_title,
-        productMeta:data.meta_disc,
-
-        brandId:data.brand_id,
-        catId:data.cat_id,
-        
-        imageUrl: newData.image,
-        thumbUrl: newData.thumb
-      }
-    var postOptions={
-      method:'post',
-      headers: {'Content-Type': 'application/json'},
-      body:JSON.stringify({productId:productId,
-        ...newConvertData})
-    }
-   console.log(postOptions)
-  fetch(env.siteApi + "/panel/product/editProduct",postOptions)
-  .then(res => res.json())
-  .then(
-    (result) => {
-      if(result.error){
-        console.log("Error")
-      }
-        else{
-          console.log("Done")
-          
-        }
-        
-    },
-    (error) => {
-      console.log(error);
-    }
-  )
-  }
   //window.scrollTo(0, 270);},[pageNumber,filters,perPage,refreshTable])
    return(
       <div className="user" style={{direction:direction}}>
@@ -164,16 +72,11 @@ function Products(props){
             <i className="fa-solid fa-plus"></i>
             <p>{tabletrans.addNew[lang]}</p>
           </div>
-          <div className="edit-btn" onClick={()=>RefreshItems()}>
-            <i className="fa-solid fa-refresh"></i>
-            <p>{tabletrans.update[lang]}</p>
-          </div>
         </div>
       </div>
       <div className="list-container">
         
-        <ProductFilters lang={props.lang} setFilters={setFilters}
-          options={content.brand} filters={filters} setStore={setStore}/>
+        
         <div className="user-list"> 
           {loading?env.loader:<ProductTable product={content} lang={lang}
           store={store}/>}
